@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Victorian Road Safety Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8d00c278-738e-4c7f-bfe8-908f0f758e34"
+  }
+}

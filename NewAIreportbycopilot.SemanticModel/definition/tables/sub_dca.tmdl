@@ -1,0 +1,50 @@
+table sub_dca
+	lineageTag: c396f1dd-c916-4504-b2e0-7cac276e8131
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: 2cf97cd6-084b-48b5-8579-611565108148
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUB_DCA_CODE
+		dataType: string
+		lineageTag: 470eba2a-d382-4fb3-bad5-8fc7deb645d0
+		summarizeBy: none
+		sourceColumn: SUB_DCA_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUB_DCA_SEQ
+		dataType: int64
+		formatString: 0
+		lineageTag: 651caef1-6a75-47e8-a2ac-d17c7eb72691
+		summarizeBy: sum
+		sourceColumn: SUB_DCA_SEQ
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUB_DCA_CODE_DESC
+		dataType: string
+		lineageTag: 42706c1f-dc00-4a04-9923-66da756b66e4
+		summarizeBy: none
+		sourceColumn: SUB_DCA_CODE_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sub_dca = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\sub_dca.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"SUB_DCA_CODE", type text}, {"SUB_DCA_SEQ", Int64.Type}, {"SUB_DCA_CODE_DESC", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

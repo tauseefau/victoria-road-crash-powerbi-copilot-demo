@@ -1,0 +1,51 @@
+table atmospheric_cond
+	lineageTag: 3200d987-ef14-4d41-9a8c-332750a2ef4a
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: 199efd73-c506-42c3-8406-450f803acd99
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ATMOSPH_COND
+		dataType: int64
+		formatString: 0
+		lineageTag: 47de47d5-8e20-4ac9-a1ec-0b96540b1b57
+		summarizeBy: sum
+		sourceColumn: ATMOSPH_COND
+
+		annotation SummarizationSetBy = Automatic
+
+	column ATMOSPH_COND_SEQ
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d604aa7-e8e0-4061-a9a2-4577c56662b3
+		summarizeBy: sum
+		sourceColumn: ATMOSPH_COND_SEQ
+
+		annotation SummarizationSetBy = Automatic
+
+	column ATMOSPH_COND_DESC
+		dataType: string
+		lineageTag: f81c3839-b268-446f-909a-845514cbbbfa
+		summarizeBy: none
+		sourceColumn: ATMOSPH_COND_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition atmospheric_cond = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\atmospheric_cond.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"ATMOSPH_COND", Int64.Type}, {"ATMOSPH_COND_SEQ", Int64.Type}, {"ATMOSPH_COND_DESC", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

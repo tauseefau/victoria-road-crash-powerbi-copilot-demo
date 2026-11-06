@@ -1,0 +1,123 @@
+table accident_event
+	lineageTag: 248cc903-d4fa-4d22-a629-bb089a75f3e1
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: 6cd659fb-91cc-46e7-90c4-85256f9bd6ff
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column EVENT_SEQ_NO
+		dataType: int64
+		formatString: 0
+		lineageTag: 1569ec2f-b357-4239-8505-f68091df4137
+		summarizeBy: sum
+		sourceColumn: EVENT_SEQ_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column EVENT_TYPE
+		dataType: string
+		lineageTag: 45ae0f4b-ee7a-43ac-9e7d-b3ad0561e39b
+		summarizeBy: none
+		sourceColumn: EVENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column EVENT_TYPE_DESC
+		dataType: string
+		lineageTag: 5d5fb50d-4512-4f8b-9640-279ac51dc6a6
+		summarizeBy: none
+		sourceColumn: EVENT_TYPE_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_1_ID
+		dataType: string
+		lineageTag: 271a765e-ce52-4a6c-b1ad-628da1002ab6
+		summarizeBy: none
+		sourceColumn: VEHICLE_1_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_1_COLL_PT
+		dataType: string
+		lineageTag: 3f97368c-149a-477b-8a25-c8c7626c719e
+		summarizeBy: none
+		sourceColumn: VEHICLE_1_COLL_PT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VEHICLE 1 COLL PT DESC'
+		dataType: string
+		lineageTag: 3c99603b-ce56-4e79-9288-6b654e618e35
+		summarizeBy: none
+		sourceColumn: VEHICLE 1 COLL PT DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_2_ID
+		dataType: string
+		lineageTag: 0937684e-c9b3-484b-b460-f5abb898c4c5
+		summarizeBy: none
+		sourceColumn: VEHICLE_2_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_2_COLL_PT
+		dataType: string
+		lineageTag: 834acd73-994b-469b-b64b-76ca3cbc3c74
+		summarizeBy: none
+		sourceColumn: VEHICLE_2_COLL_PT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VEHICLE 2 COLL PT DESC'
+		dataType: string
+		lineageTag: 3018796b-446e-49f7-bfff-b1e1aa678e05
+		summarizeBy: none
+		sourceColumn: VEHICLE 2 COLL PT DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERSON_ID
+		dataType: string
+		lineageTag: f4905fcd-6bd7-4373-9b3a-eb3381862a7a
+		summarizeBy: none
+		sourceColumn: PERSON_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBJECT_TYPE
+		dataType: int64
+		formatString: 0
+		lineageTag: f61c2054-664f-405f-87f6-bd6696ceddd8
+		summarizeBy: sum
+		sourceColumn: OBJECT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBJECT_TYPE_DESC
+		dataType: string
+		lineageTag: 1b374a37-9150-4672-acf5-536d586239a8
+		summarizeBy: none
+		sourceColumn: OBJECT_TYPE_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition accident_event = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\accident_event.csv"),[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"EVENT_SEQ_NO", Int64.Type}, {"EVENT_TYPE", type text}, {"EVENT_TYPE_DESC", type text}, {"VEHICLE_1_ID", type text}, {"VEHICLE_1_COLL_PT", type text}, {"VEHICLE 1 COLL PT DESC", type text}, {"VEHICLE_2_ID", type text}, {"VEHICLE_2_COLL_PT", type text}, {"VEHICLE 2 COLL PT DESC", type text}, {"PERSON_ID", type text}, {"OBJECT_TYPE", Int64.Type}, {"OBJECT_TYPE_DESC", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,332 @@
+table vehicle
+	lineageTag: 56235748-1ec8-4616-8daf-14b3235079b0
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: 9ea00afc-f7a6-47c5-aa1d-2c6bef1695f7
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_ID
+		dataType: string
+		lineageTag: 316a5fef-0c94-4c7e-9cd2-2d5ab5236dce
+		summarizeBy: none
+		sourceColumn: VEHICLE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_YEAR_MANUF
+		dataType: int64
+		formatString: 0
+		lineageTag: 35508795-c36d-4edd-977a-f37e8134bda8
+		summarizeBy: sum
+		sourceColumn: VEHICLE_YEAR_MANUF
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_DCA_CODE
+		dataType: int64
+		formatString: 0
+		lineageTag: d3a5ff43-a96f-475a-a7b3-f1689b89e57b
+		summarizeBy: sum
+		sourceColumn: VEHICLE_DCA_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column INITIAL_DIRECTION
+		dataType: string
+		lineageTag: 953426b8-1ff1-4b01-ae5e-1814f8177c0c
+		summarizeBy: none
+		sourceColumn: INITIAL_DIRECTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_SURFACE_TYPE
+		dataType: int64
+		formatString: 0
+		lineageTag: b6799dc8-e472-49b9-8b73-6b1a1e897ee1
+		summarizeBy: sum
+		sourceColumn: ROAD_SURFACE_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_SURFACE_TYPE_DESC
+		dataType: string
+		lineageTag: 6d7fc5df-5447-43e3-8bad-de3b8bc6547c
+		summarizeBy: none
+		sourceColumn: ROAD_SURFACE_TYPE_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column REG_STATE
+		dataType: string
+		lineageTag: e4a8a539-4d1e-40e8-9042-78a0767373d9
+		summarizeBy: none
+		sourceColumn: REG_STATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_BODY_STYLE
+		dataType: string
+		lineageTag: 88b0e5e7-24bc-49b0-9b26-0037a43f3a43
+		summarizeBy: none
+		sourceColumn: VEHICLE_BODY_STYLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_MAKE
+		dataType: string
+		lineageTag: a24ae5b8-2503-4008-aa8f-947d2808ca1c
+		summarizeBy: none
+		sourceColumn: VEHICLE_MAKE
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_MODEL
+		dataType: string
+		lineageTag: 4c851b31-cb2c-4091-9668-a58e34a09f50
+		summarizeBy: none
+		sourceColumn: VEHICLE_MODEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_POWER
+		dataType: string
+		lineageTag: fe63f96e-e496-4ea9-a92a-c9d8a7bf0a96
+		summarizeBy: none
+		sourceColumn: VEHICLE_POWER
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_TYPE
+		dataType: int64
+		formatString: 0
+		lineageTag: 69fda2ea-1137-458b-970b-ec58549f6e3b
+		summarizeBy: sum
+		sourceColumn: VEHICLE_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_TYPE_DESC
+		dataType: string
+		lineageTag: 946c0819-ccfb-434b-bd9f-04349142eed7
+		summarizeBy: none
+		sourceColumn: VEHICLE_TYPE_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_WEIGHT
+		dataType: int64
+		formatString: 0
+		lineageTag: 42b1c2ee-dafc-48d4-bd74-d653083260b2
+		summarizeBy: sum
+		sourceColumn: VEHICLE_WEIGHT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONSTRUCTION_TYPE
+		dataType: string
+		lineageTag: d1323bf7-e6a4-4bc7-876b-874af8ef4cad
+		summarizeBy: none
+		sourceColumn: CONSTRUCTION_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column FUEL_TYPE
+		dataType: string
+		lineageTag: 78f8c493-eef8-4403-8423-07aef881c050
+		summarizeBy: none
+		sourceColumn: FUEL_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_OF_WHEELS
+		dataType: int64
+		formatString: 0
+		lineageTag: 33e00b00-d2c4-46d2-97b8-10983bb56cfc
+		summarizeBy: sum
+		sourceColumn: NO_OF_WHEELS
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_OF_CYLINDERS
+		dataType: int64
+		formatString: 0
+		lineageTag: 81a7b51a-3430-4f29-a626-e03c8cfccc48
+		summarizeBy: sum
+		sourceColumn: NO_OF_CYLINDERS
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEATING_CAPACITY
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f736d6a-2270-4ee7-b28c-1ea4d34038a3
+		summarizeBy: sum
+		sourceColumn: SEATING_CAPACITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column TARE_WEIGHT
+		dataType: int64
+		formatString: 0
+		lineageTag: 94417d3e-e08d-4a63-a2c7-49c46c7a55b0
+		summarizeBy: sum
+		sourceColumn: TARE_WEIGHT
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL_NO_OCCUPANTS
+		dataType: int64
+		formatString: 0
+		lineageTag: 650abc05-2c81-4f70-aeeb-e7be47fe1484
+		summarizeBy: sum
+		sourceColumn: TOTAL_NO_OCCUPANTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CARRY_CAPACITY
+		dataType: int64
+		formatString: 0
+		lineageTag: a944e9e8-5f14-43ec-9750-53e7e0d54b31
+		summarizeBy: sum
+		sourceColumn: CARRY_CAPACITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUBIC_CAPACITY
+		dataType: int64
+		formatString: 0
+		lineageTag: 970dea97-1678-4b9d-9bdd-ecd9a6280d37
+		summarizeBy: sum
+		sourceColumn: CUBIC_CAPACITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column FINAL_DIRECTION
+		dataType: string
+		lineageTag: c8d0fb68-460d-4672-a5e2-69953f467edd
+		summarizeBy: none
+		sourceColumn: FINAL_DIRECTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column DRIVER_INTENT
+		dataType: int64
+		formatString: 0
+		lineageTag: b147af40-3adc-4201-a4aa-fb62097b1a30
+		summarizeBy: sum
+		sourceColumn: DRIVER_INTENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_MOVEMENT
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ed4bef7-1a76-4395-9a0b-3e5f78f0cc9d
+		summarizeBy: sum
+		sourceColumn: VEHICLE_MOVEMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAILER_TYPE
+		dataType: string
+		lineageTag: 326d7765-ba77-42d0-9d23-bc22773c915f
+		summarizeBy: none
+		sourceColumn: TRAILER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_COLOUR_1
+		dataType: string
+		lineageTag: 35b9be19-a7c8-4f31-8737-c0b51b1b78a0
+		summarizeBy: none
+		sourceColumn: VEHICLE_COLOUR_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_COLOUR_2
+		dataType: string
+		lineageTag: c39e1ce0-cc7d-4e2d-b069-ac7e71baf5d6
+		summarizeBy: none
+		sourceColumn: VEHICLE_COLOUR_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAUGHT_FIRE
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ea80081-a2b5-44af-9b0f-f0105cdafecf
+		summarizeBy: sum
+		sourceColumn: CAUGHT_FIRE
+
+		annotation SummarizationSetBy = Automatic
+
+	column INITIAL_IMPACT
+		dataType: string
+		lineageTag: 45d03d39-d30c-4c95-be59-502cc4c9d4ee
+		summarizeBy: none
+		sourceColumn: INITIAL_IMPACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAMPS
+		dataType: int64
+		formatString: 0
+		lineageTag: a4906e51-aa09-471d-9123-9945b6ebed36
+		summarizeBy: sum
+		sourceColumn: LAMPS
+
+		annotation SummarizationSetBy = Automatic
+
+	column LEVEL_OF_DAMAGE
+		dataType: int64
+		formatString: 0
+		lineageTag: 85664de0-b044-4151-8011-3f5018fbf309
+		summarizeBy: sum
+		sourceColumn: LEVEL_OF_DAMAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOWED_AWAY_FLAG
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cbb6ce6-c9cf-495d-a47e-3b1dbd0004e5
+		summarizeBy: sum
+		sourceColumn: TOWED_AWAY_FLAG
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAFFIC_CONTROL
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e41e5bd-2f59-4b6f-b201-eba7e0bba618
+		summarizeBy: sum
+		sourceColumn: TRAFFIC_CONTROL
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAFFIC_CONTROL_DESC
+		dataType: string
+		lineageTag: aacb21e7-d20d-4e69-926b-23911ff5ea1d
+		summarizeBy: none
+		sourceColumn: TRAFFIC_CONTROL_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vehicle = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\vehicle.csv"),[Delimiter=",", Columns=37, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"VEHICLE_ID", type text}, {"VEHICLE_YEAR_MANUF", Int64.Type}, {"VEHICLE_DCA_CODE", Int64.Type}, {"INITIAL_DIRECTION", type text}, {"ROAD_SURFACE_TYPE", Int64.Type}, {"ROAD_SURFACE_TYPE_DESC", type text}, {"REG_STATE", type text}, {"VEHICLE_BODY_STYLE", type text}, {"VEHICLE_MAKE", type text}, {"VEHICLE_MODEL", type text}, {"VEHICLE_POWER", type text}, {"VEHICLE_TYPE", Int64.Type}, {"VEHICLE_TYPE_DESC", type text}, {"VEHICLE_WEIGHT", Int64.Type}, {"CONSTRUCTION_TYPE", type text}, {"FUEL_TYPE", type text}, {"NO_OF_WHEELS", Int64.Type}, {"NO_OF_CYLINDERS", Int64.Type}, {"SEATING_CAPACITY", Int64.Type}, {"TARE_WEIGHT", Int64.Type}, {"TOTAL_NO_OCCUPANTS", Int64.Type}, {"CARRY_CAPACITY", Int64.Type}, {"CUBIC_CAPACITY", Int64.Type}, {"FINAL_DIRECTION", type text}, {"DRIVER_INTENT", Int64.Type}, {"VEHICLE_MOVEMENT", Int64.Type}, {"TRAILER_TYPE", type text}, {"VEHICLE_COLOUR_1", type text}, {"VEHICLE_COLOUR_2", type text}, {"CAUGHT_FIRE", Int64.Type}, {"INITIAL_IMPACT", type text}, {"LAMPS", Int64.Type}, {"LEVEL_OF_DAMAGE", Int64.Type}, {"TOWED_AWAY_FLAG", Int64.Type}, {"TRAFFIC_CONTROL", Int64.Type}, {"TRAFFIC_CONTROL_DESC", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

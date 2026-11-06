@@ -1,0 +1,152 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 533.57479474639854,
+            "y": 307.79458322518565
+          },
+          "nodeIndex": "accident",
+          "nodeLineageTag": "e088e65e-e552-48f6-a343-1449d2dfd0e1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1152.998905228304,
+            "y": 272.45681737160726
+          },
+          "nodeIndex": "accident_event",
+          "nodeLineageTag": "248cc903-d4fa-4d22-a629-bb089a75f3e1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 534.00157034336644,
+            "y": -45.845745793584683
+          },
+          "nodeIndex": "accident_location",
+          "nodeLineageTag": "e345c141-2cf8-458b-93a5-a57b09f69969",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 906.58077347116,
+            "y": 623.54995609408388
+          },
+          "nodeIndex": "atmospheric_cond",
+          "nodeLineageTag": "3200d987-ef14-4d41-9a8c-332750a2ef4a",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 820.60871229388715,
+            "y": -0.30031690458827143
+          },
+          "nodeIndex": "node",
+          "nodeLineageTag": "3be1026a-f3d1-4f09-a7ea-3f9509d83300",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 247.41418572354337,
+            "y": -50
+          },
+          "nodeIndex": "person",
+          "nodeLineageTag": "074ee268-3602-4a68-b3dc-1179d5f73d01",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 530.2892467384695
+          },
+          "nodeIndex": "road_surface_cond",
+          "nodeLineageTag": "fb19aa35-dd63-4ae3-b761-15995ec87b31",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 58.018727129614376,
+            "y": 303.04740364773693
+          },
+          "nodeIndex": "sub_dca",
+          "nodeLineageTag": "c396f1dd-c916-4504-b2e0-7cac276e8131",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 619.57443763019944,
+            "y": 759.32456602091338
+          },
+          "nodeIndex": "vehicle",
+          "nodeLineageTag": "56235748-1ec8-4616-8daf-14b3235079b0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 333.14546981217904,
+            "y": 759.31505127243236
+          },
+          "nodeIndex": "victorian_road_crash_data",
+          "nodeLineageTag": "7b6398d0-4458-4abe-8abf-bc99d2b2b612",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

@@ -1,0 +1,551 @@
+table victorian_road_crash_data
+	lineageTag: 7b6398d0-4458-4abe-8abf-bc99d2b2b612
+
+	measure Crashes = COUNTROWS(victorian_road_crash_data)
+		formatString: #,0
+		lineageTag: b8d3df22-06ac-43c2-8cb4-1699c1c0e45a
+
+	measure Deaths = SUM(victorian_road_crash_data[FATALITY])
+		formatString: #,0
+		lineageTag: a766a516-d04b-49d5-bfde-21d92e5b191d
+
+	measure 'Serious Injuries' = SUM(victorian_road_crash_data[SERIOUSINJURY])
+		formatString: #,0
+		lineageTag: 3a016272-4d12-4dc0-b080-1b3dcf256f45
+
+	measure 'Deaths per 1,000 Crashes' = DIVIDE([Deaths], [Crashes]) * 1000
+		formatString: 0.0
+		lineageTag: 5852da54-de6f-49dd-904f-248dc4118871
+
+	measure 'Crashes vs Prior Year' = ```
+			VAR y = YEAR(MAX(victorian_road_crash_data[ACCIDENT_DATE]))
+			VAR cur = CALCULATE([Crashes], REMOVEFILTERS('LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'), 'LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'[Year] = y)
+			VAR prior = CALCULATE([Crashes], REMOVEFILTERS('LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'), 'LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'[Year] = y - 1)
+			RETURN
+			    IF(
+			        ISBLANK(y), BLANK(),
+			        IF(ISBLANK(prior), y & ": no prior year", y & ": " & FORMAT(cur - prior, "+#,0;-#,0;0") & " vs " & (y - 1))
+			    )
+			```
+		lineageTag: 7c0cd964-6fd5-4bd1-803f-644259576a93
+
+	measure 'Deaths vs Prior Year' = ```
+			VAR y = YEAR(MAX(victorian_road_crash_data[ACCIDENT_DATE]))
+			VAR cur = CALCULATE([Deaths], REMOVEFILTERS('LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'), 'LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'[Year] = y)
+			VAR prior = CALCULATE([Deaths], REMOVEFILTERS('LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'), 'LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'[Year] = y - 1)
+			RETURN
+			    IF(
+			        ISBLANK(y), BLANK(),
+			        IF(ISBLANK(prior), y & ": no prior year", y & ": " & FORMAT(cur - prior, "+#,0;-#,0;0") & " vs " & (y - 1))
+			    )
+			```
+		lineageTag: 3664b18a-6f31-4a6c-99b0-32be73422266
+
+	measure 'Serious Injuries vs Prior Year' = ```
+			VAR y = YEAR(MAX(victorian_road_crash_data[ACCIDENT_DATE]))
+			VAR cur = CALCULATE([Serious Injuries], REMOVEFILTERS('LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'), 'LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'[Year] = y)
+			VAR prior = CALCULATE([Serious Injuries], REMOVEFILTERS('LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'), 'LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5'[Year] = y - 1)
+			RETURN
+			    IF(
+			        ISBLANK(y), BLANK(),
+			        IF(ISBLANK(prior), y & ": no prior year", y & ": " & FORMAT(cur - prior, "+#,0;-#,0;0") & " vs " & (y - 1))
+			    )
+			```
+		lineageTag: 74310e92-219e-4773-a27b-3fe1457aed7d
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: e68d5586-ad26-474b-9df8-81ee1526e824
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCIDENT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 43ce8315-8886-478f-80a9-341800e74c78
+		summarizeBy: none
+		sourceColumn: ACCIDENT_DATE
+
+		variation Variation
+			isDefault
+			relationship: 47de62d7-042a-4d36-95da-40bb53283ad0
+			defaultHierarchy: LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ACCIDENT_TIME
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 956a15d9-8883-4640-845b-98cc61869c62
+		summarizeBy: none
+		sourceColumn: ACCIDENT_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column ACCIDENT_TYPE
+		dataType: string
+		lineageTag: c1258e69-652c-4ae0-831c-278a2587c2ee
+		summarizeBy: none
+		sourceColumn: ACCIDENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAY_OF_WEEK
+		dataType: string
+		lineageTag: 21a7224c-88d2-4042-abbf-078f2d122f4d
+		summarizeBy: none
+		sourceColumn: DAY_OF_WEEK
+		sortByColumn: 'Day Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCA_CODE
+		dataType: int64
+		formatString: 0
+		lineageTag: de2d6cfa-1669-49ff-bad3-90e9dbfcdf32
+		summarizeBy: sum
+		sourceColumn: DCA_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCA_CODE_DESCRIPTION
+		dataType: string
+		lineageTag: d7ab183c-5d87-4e1e-b4b2-19a82170a805
+		summarizeBy: none
+		sourceColumn: DCA_CODE_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column LIGHT_CONDITION
+		dataType: string
+		lineageTag: 6191b6a6-bb80-41c7-b888-c3591aac7b07
+		summarizeBy: none
+		sourceColumn: LIGHT_CONDITION
+
+		annotation SummarizationSetBy = Automatic
+
+	column POLICE_ATTEND
+		dataType: string
+		lineageTag: 0e5e498b-864a-46ef-9618-4f62993cb9b2
+		summarizeBy: none
+		sourceColumn: POLICE_ATTEND
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_GEOMETRY
+		dataType: string
+		lineageTag: 4ddcd99f-186b-4c94-8cea-ba0fbbbc42b9
+		summarizeBy: none
+		sourceColumn: ROAD_GEOMETRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEVERITY
+		dataType: string
+		lineageTag: f802967b-6fc7-443c-a659-eef7eeb48f57
+		summarizeBy: none
+		sourceColumn: SEVERITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPEED_ZONE
+		dataType: string
+		lineageTag: 27ab620c-d6b6-4c20-94fe-0dbbe1fa2d1d
+		summarizeBy: none
+		sourceColumn: SPEED_ZONE
+
+		annotation SummarizationSetBy = Automatic
+
+	column RUN_OFFROAD
+		dataType: string
+		lineageTag: 0bdbaa72-635c-487d-80bb-b78a1cfeb88e
+		summarizeBy: none
+		sourceColumn: RUN_OFFROAD
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_NAME
+		dataType: string
+		lineageTag: 427dfe32-5182-45cb-bce4-5d35c087d40e
+		summarizeBy: none
+		sourceColumn: ROAD_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_TYPE
+		dataType: string
+		lineageTag: 915b38f8-4950-461f-96bf-ffb44644d647
+		summarizeBy: none
+		sourceColumn: ROAD_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_ROUTE_1
+		dataType: int64
+		formatString: 0
+		lineageTag: da3b44e3-8e0f-43f0-8d41-af90e1c12ba7
+		summarizeBy: sum
+		sourceColumn: ROAD_ROUTE_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column LGA_NAME
+		dataType: string
+		lineageTag: 56572a6e-bfbb-4003-bda7-682c27b20dca
+		summarizeBy: none
+		sourceColumn: LGA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column DTP_REGION
+		dataType: string
+		lineageTag: d93de842-3ee5-4098-afc5-55c6c8e55445
+		summarizeBy: none
+		sourceColumn: DTP_REGION
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATITUDE
+		dataType: double
+		lineageTag: 0df99ba0-07ef-474e-8585-0d673634a945
+		summarizeBy: sum
+		sourceColumn: LATITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LONGITUDE
+		dataType: double
+		lineageTag: 33fb40b8-1b25-4808-99db-88f704260150
+		summarizeBy: sum
+		sourceColumn: LONGITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VICGRID_X
+		dataType: double
+		lineageTag: f3e1cb8f-2403-49a1-925a-ef96a01f4b0b
+		summarizeBy: sum
+		sourceColumn: VICGRID_X
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VICGRID_Y
+		dataType: double
+		lineageTag: f07384dd-a130-4f39-b47f-9d59b0cb3154
+		summarizeBy: sum
+		sourceColumn: VICGRID_Y
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_PERSONS
+		dataType: int64
+		formatString: 0
+		lineageTag: 49b31637-32fd-46cc-a218-97df7cc911d4
+		summarizeBy: sum
+		sourceColumn: TOTAL_PERSONS
+
+		annotation SummarizationSetBy = Automatic
+
+	column INJ_OR_FATAL
+		dataType: int64
+		formatString: 0
+		lineageTag: 067623e4-1b2c-47bd-8e58-2ff3169be817
+		summarizeBy: sum
+		sourceColumn: INJ_OR_FATAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column FATALITY
+		dataType: int64
+		formatString: 0
+		lineageTag: c9b677c5-f1df-41d5-aa39-60a9a59bc335
+		summarizeBy: sum
+		sourceColumn: FATALITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERIOUSINJURY
+		dataType: int64
+		formatString: 0
+		lineageTag: 202e4759-f5a4-481d-9483-7463d2ce33b6
+		summarizeBy: sum
+		sourceColumn: SERIOUSINJURY
+
+		annotation SummarizationSetBy = Automatic
+
+	column OTHERINJURY
+		dataType: int64
+		formatString: 0
+		lineageTag: a9271dcd-2e8b-4816-b6d6-8e4998337584
+		summarizeBy: sum
+		sourceColumn: OTHERINJURY
+
+		annotation SummarizationSetBy = Automatic
+
+	column NONINJURED
+		dataType: int64
+		formatString: 0
+		lineageTag: 99da9939-d072-47c7-87de-c7a21dff2ab2
+		summarizeBy: sum
+		sourceColumn: NONINJURED
+
+		annotation SummarizationSetBy = Automatic
+
+	column MALES
+		dataType: int64
+		formatString: 0
+		lineageTag: 495d4d7c-35ea-4936-9767-e2db253f7691
+		summarizeBy: sum
+		sourceColumn: MALES
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEMALES
+		dataType: int64
+		formatString: 0
+		lineageTag: e9c3cc13-feef-4781-9808-5234f5515c92
+		summarizeBy: sum
+		sourceColumn: FEMALES
+
+		annotation SummarizationSetBy = Automatic
+
+	column BICYCLIST
+		dataType: int64
+		formatString: 0
+		lineageTag: 2af685bb-7177-466c-bd61-1d4adbcd6410
+		summarizeBy: sum
+		sourceColumn: BICYCLIST
+
+		annotation SummarizationSetBy = Automatic
+
+	column PASSENGER
+		dataType: int64
+		formatString: 0
+		lineageTag: 961cafcf-ee9c-4f01-ae59-db20e9c59f15
+		summarizeBy: sum
+		sourceColumn: PASSENGER
+
+		annotation SummarizationSetBy = Automatic
+
+	column DRIVER
+		dataType: int64
+		formatString: 0
+		lineageTag: 0766fbab-b712-44a4-96f0-ab9e57a7207e
+		summarizeBy: sum
+		sourceColumn: DRIVER
+
+		annotation SummarizationSetBy = Automatic
+
+	column PEDESTRIAN
+		dataType: int64
+		formatString: 0
+		lineageTag: dfdf0b33-487e-4a3b-bad5-3f17e3b0ef15
+		summarizeBy: sum
+		sourceColumn: PEDESTRIAN
+
+		annotation SummarizationSetBy = Automatic
+
+	column PILLION
+		dataType: int64
+		formatString: 0
+		lineageTag: d39326d9-6135-4fb9-b244-75a173ef6e00
+		summarizeBy: sum
+		sourceColumn: PILLION
+
+		annotation SummarizationSetBy = Automatic
+
+	column MOTORCYCLIST
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c08a152-125a-478b-a3a2-6d70c75f3d8f
+		summarizeBy: sum
+		sourceColumn: MOTORCYCLIST
+
+		annotation SummarizationSetBy = Automatic
+
+	column UNKNOWN
+		dataType: int64
+		formatString: 0
+		lineageTag: a963ad47-e796-489e-a478-6a61e3cc47f1
+		summarizeBy: sum
+		sourceColumn: UNKNOWN
+
+		annotation SummarizationSetBy = Automatic
+
+	column PED_CYCLIST_5_12
+		dataType: int64
+		formatString: 0
+		lineageTag: a3fad014-73da-4eb0-881f-3c1fff404b7e
+		summarizeBy: sum
+		sourceColumn: PED_CYCLIST_5_12
+
+		annotation SummarizationSetBy = Automatic
+
+	column PED_CYCLIST_13_18
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a4fbc4a-02af-40f0-8290-acf26d7fb377
+		summarizeBy: sum
+		sourceColumn: PED_CYCLIST_13_18
+
+		annotation SummarizationSetBy = Automatic
+
+	column OLD_PED_65_AND_OVER
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f08178a-0635-4d26-bf99-00940e501b44
+		summarizeBy: sum
+		sourceColumn: OLD_PED_65_AND_OVER
+
+		annotation SummarizationSetBy = Automatic
+
+	column OLD_DRIVER_75_AND_OVER
+		dataType: int64
+		formatString: 0
+		lineageTag: 57e19a9a-4776-46eb-b47d-e4d61e9d4674
+		summarizeBy: sum
+		sourceColumn: OLD_DRIVER_75_AND_OVER
+
+		annotation SummarizationSetBy = Automatic
+
+	column YOUNG_DRIVER_18_25
+		dataType: int64
+		formatString: 0
+		lineageTag: 0803eaa0-012a-4206-a724-6626edc3f653
+		summarizeBy: sum
+		sourceColumn: YOUNG_DRIVER_18_25
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_OF_VEHICLES
+		dataType: int64
+		formatString: 0
+		lineageTag: 017f838f-1f6e-4213-845e-0b297b6dc6f2
+		summarizeBy: sum
+		sourceColumn: NO_OF_VEHICLES
+
+		annotation SummarizationSetBy = Automatic
+
+	column HEAVYVEHICLE
+		dataType: int64
+		formatString: 0
+		lineageTag: c9dbcdb2-a163-420a-a4fa-21ad804fd3a0
+		summarizeBy: sum
+		sourceColumn: HEAVYVEHICLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PASSENGERVEHICLE
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b5bbc00-1a08-4d76-9098-f61fb5534eee
+		summarizeBy: sum
+		sourceColumn: PASSENGERVEHICLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MOTORCYCLE
+		dataType: int64
+		formatString: 0
+		lineageTag: bf985b24-bc48-4383-bda4-f34ac7916ef8
+		summarizeBy: sum
+		sourceColumn: MOTORCYCLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PT_VEHICLE
+		dataType: int64
+		formatString: 0
+		lineageTag: 8052a045-5fd2-414f-8e56-6b2003302591
+		summarizeBy: sum
+		sourceColumn: PT_VEHICLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEG_URBAN_NAME
+		dataType: string
+		lineageTag: 49c5327d-e285-4b5f-bb52-538b5ad4492f
+		summarizeBy: none
+		sourceColumn: DEG_URBAN_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SRNS
+		dataType: string
+		lineageTag: 87b1da4c-a76e-4edd-9bf8-1d69c6d454f3
+		summarizeBy: none
+		sourceColumn: SRNS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RMA
+		dataType: string
+		lineageTag: 9d3519eb-3de7-4d18-8593-765c5afb7d0a
+		summarizeBy: none
+		sourceColumn: RMA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIVIDED
+		dataType: string
+		lineageTag: 8db77a6f-cf12-456d-b2ae-f2c9782b8003
+		summarizeBy: none
+		sourceColumn: DIVIDED
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAT_DIV_NAME
+		dataType: string
+		lineageTag: 694b41ac-385d-4d8e-8982-2d883db2360c
+		summarizeBy: none
+		sourceColumn: STAT_DIV_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Crash Hour' = HOUR(victorian_road_crash_data[ACCIDENT_TIME])
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a30bb4a-9582-4820-8b10-d3e93d063573
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Order'
+		isHidden
+		dataType: int64
+		formatString: 0
+		lineageTag: 613b7eda-3eda-4f51-8927-5efb0afbe23a
+		summarizeBy: none
+		sourceColumn: Day Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition victorian_road_crash_data = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\victorian_road_crash_data.csv"),[Delimiter=",", Columns=52, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"ACCIDENT_DATE", type date}, {"ACCIDENT_TIME", type time}, {"ACCIDENT_TYPE", type text}, {"DAY_OF_WEEK", type text}, {"DCA_CODE", Int64.Type}, {"DCA_CODE_DESCRIPTION", type text}, {"LIGHT_CONDITION", type text}, {"POLICE_ATTEND", type text}, {"ROAD_GEOMETRY", type text}, {"SEVERITY", type text}, {"SPEED_ZONE", type text}, {"RUN_OFFROAD", type text}, {"ROAD_NAME", type text}, {"ROAD_TYPE", type text}, {"ROAD_ROUTE_1", Int64.Type}, {"LGA_NAME", type text}, {"DTP_REGION", type text}, {"LATITUDE", type number}, {"LONGITUDE", type number}, {"VICGRID_X", type number}, {"VICGRID_Y", type number}, {"TOTAL_PERSONS", Int64.Type}, {"INJ_OR_FATAL", Int64.Type}, {"FATALITY", Int64.Type}, {"SERIOUSINJURY", Int64.Type}, {"OTHERINJURY", Int64.Type}, {"NONINJURED", Int64.Type}, {"MALES", Int64.Type}, {"FEMALES", Int64.Type}, {"BICYCLIST", Int64.Type}, {"PASSENGER", Int64.Type}, {"DRIVER", Int64.Type}, {"PEDESTRIAN", Int64.Type}, {"PILLION", Int64.Type}, {"MOTORCYCLIST", Int64.Type}, {"UNKNOWN", Int64.Type}, {"PED_CYCLIST_5_12", Int64.Type}, {"PED_CYCLIST_13_18", Int64.Type}, {"OLD_PED_65_AND_OVER", Int64.Type}, {"OLD_DRIVER_75_AND_OVER", Int64.Type}, {"YOUNG_DRIVER_18_25", Int64.Type}, {"NO_OF_VEHICLES", Int64.Type}, {"HEAVYVEHICLE", Int64.Type}, {"PASSENGERVEHICLE", type text}, {"MOTORCYCLE", Int64.Type}, {"PT_VEHICLE", Int64.Type}, {"DEG_URBAN_NAME", type text}, {"SRNS", type text}, {"RMA", type text}, {"DIVIDED", type text}, {"STAT_DIV_NAME", type text}}),
+				    #"Added Day Order" = Table.AddColumn(#"Changed Type", "Day Order", each if [DAY_OF_WEEK] = "Monday" then 1 else if [DAY_OF_WEEK] = "Tuesday" then 2 else if [DAY_OF_WEEK] = "Wednesday" then 3 else if [DAY_OF_WEEK] = "Thursday" then 4 else if [DAY_OF_WEEK] = "Friday" then 5 else if [DAY_OF_WEEK] = "Saturday" then 6 else if [DAY_OF_WEEK] = "Sunday" then 7 else null, Int64.Type)
+				in
+				    #"Added Day Order"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

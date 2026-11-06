@@ -1,0 +1,51 @@
+table road_surface_cond
+	lineageTag: fb19aa35-dd63-4ae3-b761-15995ec87b31
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: 918d50b1-692d-443b-a6e0-41122cfb5c7c
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SURFACE_COND
+		dataType: int64
+		formatString: 0
+		lineageTag: 153feab9-417b-4772-a020-8fdcf454b556
+		summarizeBy: sum
+		sourceColumn: SURFACE_COND
+
+		annotation SummarizationSetBy = Automatic
+
+	column SURFACE_COND_DESC
+		dataType: string
+		lineageTag: e3d47213-5ba0-466c-826b-b1d67a36cf25
+		summarizeBy: none
+		sourceColumn: SURFACE_COND_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column SURFACE_COND_SEQ
+		dataType: int64
+		formatString: 0
+		lineageTag: ac95b126-5317-47bb-8e96-b38cbe576b6f
+		summarizeBy: sum
+		sourceColumn: SURFACE_COND_SEQ
+
+		annotation SummarizationSetBy = Automatic
+
+	partition road_surface_cond = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\road_surface_cond.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"SURFACE_COND", Int64.Type}, {"SURFACE_COND_DESC", type text}, {"SURFACE_COND_SEQ", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

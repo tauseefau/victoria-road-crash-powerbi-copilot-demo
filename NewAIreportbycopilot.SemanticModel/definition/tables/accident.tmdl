@@ -1,0 +1,227 @@
+table accident
+	lineageTag: e088e65e-e552-48f6-a343-1449d2dfd0e1
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: 31949d33-776e-4e89-a2b8-662fc5a6b954
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCIDENT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8c687166-be55-4927-99d9-b2f6f019f9ae
+		summarizeBy: none
+		sourceColumn: ACCIDENT_DATE
+
+		variation Variation
+			isDefault
+			relationship: 346faaf0-0caa-45b4-ba78-196e80e84840
+			defaultHierarchy: LocalDateTable_fafc8ef8-4ab0-4592-ab62-839f94fffad3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ACCIDENT_TIME
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: fce4f57b-e276-487d-b166-a421d1658c9b
+		summarizeBy: none
+		sourceColumn: ACCIDENT_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column ACCIDENT_TYPE
+		dataType: int64
+		formatString: 0
+		lineageTag: 2041d60c-b5c8-4641-88a3-72c107e173a1
+		summarizeBy: sum
+		sourceColumn: ACCIDENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCIDENT_TYPE_DESC
+		dataType: string
+		lineageTag: 2ce090c8-01ad-475b-aeb6-52daa10bbd7a
+		summarizeBy: none
+		sourceColumn: ACCIDENT_TYPE_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAY_OF_WEEK
+		dataType: int64
+		formatString: 0
+		lineageTag: 6580bf72-6b38-47e8-b78c-49024b216c11
+		summarizeBy: sum
+		sourceColumn: DAY_OF_WEEK
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAY_WEEK_DESC
+		dataType: string
+		lineageTag: d0896d02-dcb7-43b0-8a8c-17c59503221e
+		summarizeBy: none
+		sourceColumn: DAY_WEEK_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCA_CODE
+		dataType: int64
+		formatString: 0
+		lineageTag: 52a7574a-262b-4440-9110-8f77ccff935b
+		summarizeBy: sum
+		sourceColumn: DCA_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCA_DESC
+		dataType: string
+		lineageTag: 0f2be452-65e7-4894-8861-c7314fc7fb26
+		summarizeBy: none
+		sourceColumn: DCA_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column LIGHT_CONDITION
+		dataType: int64
+		formatString: 0
+		lineageTag: ea52d270-6d27-495c-9eff-0c264b004706
+		summarizeBy: sum
+		sourceColumn: LIGHT_CONDITION
+
+		annotation SummarizationSetBy = Automatic
+
+	column NODE_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: f210b648-ae6b-4753-b914-e4ef8c46d18b
+		summarizeBy: count
+		sourceColumn: NODE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_OF_VEHICLES
+		dataType: int64
+		formatString: 0
+		lineageTag: 45c53a46-a991-4052-8550-23f6a290d7d4
+		summarizeBy: sum
+		sourceColumn: NO_OF_VEHICLES
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_PERSONS_KILLED
+		dataType: int64
+		formatString: 0
+		lineageTag: 29f3635e-bef3-487b-97db-25dec2493e5d
+		summarizeBy: sum
+		sourceColumn: NO_PERSONS_KILLED
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_PERSONS_INJ_2
+		dataType: int64
+		formatString: 0
+		lineageTag: 5220d104-16b1-4c84-8c3b-13ba6fde8d3e
+		summarizeBy: sum
+		sourceColumn: NO_PERSONS_INJ_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_PERSONS_INJ_3
+		dataType: int64
+		formatString: 0
+		lineageTag: 13b954e0-e93f-4c88-b207-9c7975dfec1b
+		summarizeBy: sum
+		sourceColumn: NO_PERSONS_INJ_3
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_PERSONS_NOT_INJ
+		dataType: int64
+		formatString: 0
+		lineageTag: e9e0f91f-0204-4ab4-8559-a8deeef0ef4f
+		summarizeBy: sum
+		sourceColumn: NO_PERSONS_NOT_INJ
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_PERSONS
+		dataType: int64
+		formatString: 0
+		lineageTag: 341b4754-9f13-4eac-87b6-df39beaf4da0
+		summarizeBy: sum
+		sourceColumn: NO_PERSONS
+
+		annotation SummarizationSetBy = Automatic
+
+	column POLICE_ATTEND
+		dataType: int64
+		formatString: 0
+		lineageTag: 32373b2c-0194-442e-9a29-c280546af57e
+		summarizeBy: sum
+		sourceColumn: POLICE_ATTEND
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_GEOMETRY
+		dataType: int64
+		formatString: 0
+		lineageTag: 613230b5-ca30-4f44-ab8b-e1c530653bf8
+		summarizeBy: sum
+		sourceColumn: ROAD_GEOMETRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_GEOMETRY_DESC
+		dataType: string
+		lineageTag: b4e9b82c-5356-416c-bc41-a2bc26c538d8
+		summarizeBy: none
+		sourceColumn: ROAD_GEOMETRY_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEVERITY
+		dataType: int64
+		formatString: 0
+		lineageTag: 97ecf549-b221-4141-b193-8bf094a39152
+		summarizeBy: sum
+		sourceColumn: SEVERITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPEED_ZONE
+		dataType: int64
+		formatString: 0
+		lineageTag: d9af0255-c1e3-45a4-bd23-527a3758f0c0
+		summarizeBy: sum
+		sourceColumn: SPEED_ZONE
+
+		annotation SummarizationSetBy = Automatic
+
+	column RMA
+		dataType: string
+		lineageTag: 6bee5ad5-67a7-4510-8a9b-9911e2906a30
+		summarizeBy: none
+		sourceColumn: RMA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition accident = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\accident.csv"),[Delimiter=",", Columns=23, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"ACCIDENT_DATE", type date}, {"ACCIDENT_TIME", type time}, {"ACCIDENT_TYPE", Int64.Type}, {"ACCIDENT_TYPE_DESC", type text}, {"DAY_OF_WEEK", Int64.Type}, {"DAY_WEEK_DESC", type text}, {"DCA_CODE", Int64.Type}, {"DCA_DESC", type text}, {"LIGHT_CONDITION", Int64.Type}, {"NODE_ID", Int64.Type}, {"NO_OF_VEHICLES", Int64.Type}, {"NO_PERSONS_KILLED", Int64.Type}, {"NO_PERSONS_INJ_2", Int64.Type}, {"NO_PERSONS_INJ_3", Int64.Type}, {"NO_PERSONS_NOT_INJ", Int64.Type}, {"NO_PERSONS", Int64.Type}, {"POLICE_ATTEND", Int64.Type}, {"ROAD_GEOMETRY", Int64.Type}, {"ROAD_GEOMETRY_DESC", type text}, {"SEVERITY", Int64.Type}, {"SPEED_ZONE", Int64.Type}, {"RMA", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,3 @@
+# Power BI machine-local files (cache holds a data copy; settings are bound to one PC)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

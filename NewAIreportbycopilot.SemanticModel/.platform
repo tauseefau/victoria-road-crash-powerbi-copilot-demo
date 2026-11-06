@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "NewAIreportbycopilot"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6ed2eeeb-4547-41a4-8f77-f9de16fcadc9"
+  }
+}

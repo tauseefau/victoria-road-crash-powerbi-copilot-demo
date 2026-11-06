@@ -1,0 +1,50 @@
+relationship 346faaf0-0caa-45b4-ba78-196e80e84840
+	joinOnDateBehavior: datePartOnly
+	fromColumn: accident.ACCIDENT_DATE
+	toColumn: LocalDateTable_fafc8ef8-4ab0-4592-ab62-839f94fffad3.Date
+
+relationship 47de62d7-042a-4d36-95da-40bb53283ad0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: victorian_road_crash_data.ACCIDENT_DATE
+	toColumn: LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5.Date
+
+relationship AutoDetected_f2b1a770-de34-4a71-a548-86007b1121bc
+	fromColumn: accident_event.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+
+relationship AutoDetected_518a8650-a265-46fc-916d-895c18209185
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: accident_location.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+
+relationship AutoDetected_7826e509-473f-449b-bdd4-e8558fbba0aa
+	fromColumn: atmospheric_cond.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+
+relationship AutoDetected_0232a9cc-6a1f-4341-a290-2c69f1326c1a
+	fromColumn: node.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+
+relationship AutoDetected_e7dd6ad1-934d-4bb5-98b0-a22ddc19543b
+	fromColumn: person.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+
+relationship AutoDetected_4022f30e-c8e9-4f9e-b3e6-3fd3aeb40624
+	fromColumn: road_surface_cond.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+
+relationship AutoDetected_d5c83d6f-7219-4c2c-bfd1-695ea312434d
+	fromColumn: sub_dca.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+
+relationship AutoDetected_7f2d7dd1-bfed-4e97-9624-d48f1e5fc709
+	fromColumn: vehicle.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+
+relationship AutoDetected_a6f57dcd-9c86-4768-8561-dce96b17571e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: victorian_road_crash_data.ACCIDENT_NO
+	toColumn: accident.ACCIDENT_NO
+

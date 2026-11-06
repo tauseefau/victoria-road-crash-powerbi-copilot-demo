@@ -1,0 +1,31 @@
+model Model
+	culture: en-AU
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-AU
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["accident","accident_event","accident_location","atmospheric_cond","node","person","road_surface_cond","sub_dca","vehicle","victorian_road_crash_data"]
+
+ref table accident
+ref table DateTableTemplate_492d2bdb-3221-44e7-b577-212555080501
+ref table LocalDateTable_fafc8ef8-4ab0-4592-ab62-839f94fffad3
+ref table accident_event
+ref table accident_location
+ref table atmospheric_cond
+ref table node
+ref table person
+ref table road_surface_cond
+ref table sub_dca
+ref table vehicle
+ref table victorian_road_crash_data
+ref table LocalDateTable_54414416-33de-4d1f-a775-2118f4f740e5
+
+ref cultureInfo en-AU
+

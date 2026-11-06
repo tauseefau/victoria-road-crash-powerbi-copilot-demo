@@ -1,0 +1,92 @@
+table accident_location
+	lineageTag: e345c141-2cf8-458b-93a5-a57b09f69969
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: 66451a16-0245-4e29-95f4-561b520944ca
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NODE_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 120e18bd-c560-4a7c-acad-0e17622e614d
+		summarizeBy: count
+		sourceColumn: NODE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_ROUTE_1
+		dataType: int64
+		formatString: 0
+		lineageTag: 158c8886-3418-4d49-93c8-4c8c412d4532
+		summarizeBy: sum
+		sourceColumn: ROAD_ROUTE_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_NAME
+		dataType: string
+		lineageTag: 89ed428d-0d82-428a-ac8c-b8416e4d3079
+		summarizeBy: none
+		sourceColumn: ROAD_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_TYPE
+		dataType: string
+		lineageTag: ddb5aa15-2984-43aa-a660-35c94c60c48f
+		summarizeBy: none
+		sourceColumn: ROAD_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_NAME_INT
+		dataType: string
+		lineageTag: 2f1b95ca-b36f-41eb-9b72-04dabe56800c
+		summarizeBy: none
+		sourceColumn: ROAD_NAME_INT
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_TYPE_INT
+		dataType: string
+		lineageTag: ec86faef-ee43-4067-93a9-db39b5e435d2
+		summarizeBy: none
+		sourceColumn: ROAD_TYPE_INT
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISTANCE_LOCATION
+		dataType: int64
+		formatString: 0
+		lineageTag: 21b85792-ab62-444e-b887-844a89677828
+		summarizeBy: sum
+		sourceColumn: DISTANCE_LOCATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIRECTION_LOCATION
+		dataType: string
+		lineageTag: 00b3d3dc-cad1-4345-a083-4fb6782de987
+		summarizeBy: none
+		sourceColumn: DIRECTION_LOCATION
+
+		annotation SummarizationSetBy = Automatic
+
+	partition accident_location = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\accident_location.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"NODE_ID", Int64.Type}, {"ROAD_ROUTE_1", Int64.Type}, {"ROAD_NAME", type text}, {"ROAD_TYPE", type text}, {"ROAD_NAME_INT", type text}, {"ROAD_TYPE_INT", type text}, {"DISTANCE_LOCATION", Int64.Type}, {"DIRECTION_LOCATION", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

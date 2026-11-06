@@ -1,0 +1,133 @@
+table person
+	lineageTag: 074ee268-3602-4a68-b3dc-1179d5f73d01
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: e2cea644-56f2-43cb-a3d4-36c1a15cb972
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERSON_ID
+		dataType: string
+		lineageTag: 1c4a3574-139d-4421-be59-e01b84cbd732
+		summarizeBy: none
+		sourceColumn: PERSON_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_ID
+		dataType: string
+		lineageTag: ee7808b5-6054-4c12-a379-fe079143ca0f
+		summarizeBy: none
+		sourceColumn: VEHICLE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEX
+		dataType: string
+		lineageTag: 3b74e723-eae4-4ae0-a695-68a91bb31603
+		summarizeBy: none
+		sourceColumn: SEX
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGE_GROUP
+		dataType: string
+		lineageTag: e05c4388-3ddc-4c4e-ba62-72240ac0d8e7
+		summarizeBy: none
+		sourceColumn: AGE_GROUP
+
+		annotation SummarizationSetBy = Automatic
+
+	column INJ_LEVEL
+		dataType: int64
+		formatString: 0
+		lineageTag: 12fe77fc-e23e-45a4-b404-a4210e9d2980
+		summarizeBy: sum
+		sourceColumn: INJ_LEVEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column INJ_LEVEL_DESC
+		dataType: string
+		lineageTag: c5ad800f-e149-47ca-aa91-f4aee1760598
+		summarizeBy: none
+		sourceColumn: INJ_LEVEL_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEATING_POSITION
+		dataType: string
+		lineageTag: 5fce5cd2-c39e-4093-9d59-3778d7ca5a4d
+		summarizeBy: none
+		sourceColumn: SEATING_POSITION
+
+		annotation SummarizationSetBy = Automatic
+
+	column HELMET_BELT_WORN
+		dataType: int64
+		formatString: 0
+		lineageTag: 9daf1b87-4c09-4a76-8b21-6e494053a718
+		summarizeBy: sum
+		sourceColumn: HELMET_BELT_WORN
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_USER_TYPE
+		dataType: int64
+		formatString: 0
+		lineageTag: 1560d0df-13e1-4be8-97d6-f6ff0b146436
+		summarizeBy: sum
+		sourceColumn: ROAD_USER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_USER_TYPE_DESC
+		dataType: string
+		lineageTag: ec563227-2635-4d37-bf80-e796216f9eed
+		summarizeBy: none
+		sourceColumn: ROAD_USER_TYPE_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column LICENCE_STATE
+		dataType: string
+		lineageTag: d2d37e96-4191-4b04-ab7f-715193bc852e
+		summarizeBy: none
+		sourceColumn: LICENCE_STATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column TAKEN_HOSPITAL
+		dataType: string
+		lineageTag: 657e1eb2-d18a-4d24-963b-86923ae30512
+		summarizeBy: none
+		sourceColumn: TAKEN_HOSPITAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column EJECTED_CODE
+		dataType: int64
+		formatString: 0
+		lineageTag: 630f1a84-1642-4d5b-9dbc-bfab3657cce8
+		summarizeBy: sum
+		sourceColumn: EJECTED_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition person = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\person.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"PERSON_ID", type text}, {"VEHICLE_ID", type text}, {"SEX", type text}, {"AGE_GROUP", type text}, {"INJ_LEVEL", Int64.Type}, {"INJ_LEVEL_DESC", type text}, {"SEATING_POSITION", type text}, {"HELMET_BELT_WORN", Int64.Type}, {"ROAD_USER_TYPE", Int64.Type}, {"ROAD_USER_TYPE_DESC", type text}, {"LICENCE_STATE", type text}, {"TAKEN_HOSPITAL", type text}, {"EJECTED_CODE", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

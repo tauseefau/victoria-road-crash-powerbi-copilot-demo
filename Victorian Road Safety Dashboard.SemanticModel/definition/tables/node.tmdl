@@ -1,0 +1,115 @@
+table node
+	lineageTag: 3be1026a-f3d1-4f09-a7ea-3f9509d83300
+
+	column ACCIDENT_NO
+		dataType: string
+		lineageTag: b1de0c11-84a6-4ecf-bb25-7e69588274bd
+		summarizeBy: none
+		sourceColumn: ACCIDENT_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NODE_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 405f547f-c8ec-4026-a925-ff80163bb0e5
+		summarizeBy: count
+		sourceColumn: NODE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NODE_TYPE
+		dataType: string
+		lineageTag: cb181fba-26df-4ae6-ab00-02c600449b19
+		summarizeBy: none
+		sourceColumn: NODE_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column AMG_X
+		dataType: double
+		lineageTag: 7206de1a-3e0d-4110-953a-b8d085470526
+		summarizeBy: sum
+		sourceColumn: AMG_X
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AMG_Y
+		dataType: double
+		lineageTag: ebbec597-388c-46ea-9b6c-3ecec2b5cd9b
+		summarizeBy: sum
+		sourceColumn: AMG_Y
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LGA_NAME
+		dataType: string
+		lineageTag: d42e93e5-5b93-4744-93bd-c2c86ac53269
+		summarizeBy: none
+		sourceColumn: LGA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LGA NAME ALL'
+		dataType: string
+		lineageTag: b8c653cc-99d5-42c0-a5fc-74a80f861443
+		summarizeBy: none
+		sourceColumn: LGA NAME ALL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEG_URBAN_NAME
+		dataType: string
+		lineageTag: 22fd7ec7-f7e9-4b8f-bf31-c1606e69261a
+		summarizeBy: none
+		sourceColumn: DEG_URBAN_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATITUDE
+		dataType: double
+		lineageTag: da199699-0381-4f72-a250-e18fc6cfd907
+		summarizeBy: sum
+		sourceColumn: LATITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LONGITUDE
+		dataType: double
+		lineageTag: f0bd5984-e684-40f9-a6ea-53aede4ccbb7
+		summarizeBy: sum
+		sourceColumn: LONGITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column POSTCODE_CRASH
+		dataType: int64
+		formatString: 0
+		lineageTag: 322e1d8d-45c6-438d-9dc8-61c9f9cb7fa3
+		summarizeBy: sum
+		sourceColumn: POSTCODE_CRASH
+
+		annotation SummarizationSetBy = Automatic
+
+	partition node = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\tause\OneDrive\Documents\FIre Data\node.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ACCIDENT_NO", type text}, {"NODE_ID", Int64.Type}, {"NODE_TYPE", type text}, {"AMG_X", type number}, {"AMG_Y", type number}, {"LGA_NAME", type text}, {"LGA NAME ALL", type text}, {"DEG_URBAN_NAME", type text}, {"LATITUDE", type number}, {"LONGITUDE", type number}, {"POSTCODE_CRASH", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
