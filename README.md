@@ -80,6 +80,7 @@ Crashes from 2012 to 2025, recalculated from `victorian_road_crash_data.csv`:
 | `*.csv` | Victoria road crash data |
 | `CFA_Incident_Response.xlsx` | CFA incident data, in the folder but not used by the reports |
 | `_brief/report-spec.md` | The design brief for the dark dashboard |
+| `docs/connect-powerbi-hermes-and-fabric.md` | Step-by-step guide: connect Power BI and Fabric to Hermes Agent or Copilot CLI |
 | `demo/` | The demo video |
 | `repoint-data-path.ps1` | Points the reports at the CSVs on your PC |
 
